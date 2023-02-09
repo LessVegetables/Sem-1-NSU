@@ -16,6 +16,7 @@ int main()
     S2 = 0.5 * abs((0 - x1)*(y3 - y1) - (x3 - x1)*(0 - y1));
     S3 = 0.5 * abs((x2 - x1)*(0 - y1) - (0 - x1)*(y2 - y1));
 
+    printf("S0:\t%f\nS1:\t%f\nS2:\t%f\nS3\t%f\n", S0, S1, S2, S3);
     if (S0 = S1 + S2 + S3)
     {
         printf("inside");
