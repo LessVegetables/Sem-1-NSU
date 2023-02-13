@@ -36,7 +36,7 @@ int main()
         b2 = y2 - k2 * x2;
         b3 = y3 - k3 * x3;
         printf("y1 = %f*x1 + %f \ny2 = %f*x2 + %f \ny3 = %f*x3 + %f \n", k1, b1, k2, b2, k3, b3);
-        if (b1*b2*b3 == 0)
+        if (b1 == 0 || b2 == 0 || b3 == 0)
         {
             state = 2; /*on the side*/
         }
