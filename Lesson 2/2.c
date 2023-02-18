@@ -23,7 +23,7 @@ int main()
     }
     ans += intermid;
 
-    printf(ans);
+    printf("%f\n", ans);
 
     return 0;
 }
