@@ -1,24 +1,12 @@
-// Даты
-// HW due 15.03.2023
-// На вход дается дата и количество дней.
-// Нужно написать какая дата будет через
-// это количество дней (учитывая високосные
-// годы). Обязательно использовать
-// структуры(struct) и кейсы (switch)
-
 #include <stdio.h>
 #include <time.h>
 
-typedef struct Date
-{
+typedef struct Date{
     int d, m, y, leapYear;
 }date;
 
-// returns the number of days in passed month
-int daysInMonth(date day)
-{
+int daysInMonth(date day){
     int February = (day.leapYear) ? 29 : 28;
-
     switch (day.m)
     {
     case 1:
@@ -52,41 +40,23 @@ int daysInMonth(date day)
     return 0;
 }
 
-// returns 1 if leap year, 0 — otherwise
-int leap(int year)
-{
+int leap(int year){
     if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)){
-        //printf("%d\tLEAP\n", year);
         return 1;
     }
     else{
-        //printf("%d\tNOT\n", year);
         return 0;
     }
 }
 
-int main()
-{
-    clock_t t;
-    t = clock();
-
+int main(){
     int days;    
     date startDate, endDate;
 
-    // INPUT: D M Y
     scanf("%d%d%d%d", &startDate.d, &startDate.m, &startDate.y, &days);
-
-    // INPUT: DD/MM/YYYY
-    // char dateInput[10];
-    // for(int i = 0; i < 10; i++)
-    // {
-    //     scanf("%c", &dateInput[i]);
-    // }
-    // startDate.d = ((int)dateInput[0] - 48) * 10 + dateInput[1] - 48;
-    // startDate.m = ((int)dateInput[3] - 48) * 10 + dateInput[4] - 48;
-    // startDate.y = ((int)dateInput[6] - 48) * 1000 + ((int)dateInput[7] - 48) * 100 + ((int)dateInput[8] - 48) * 10 + (int)dateInput[9] - 48;
-    //
-    // scnaf("%d", &days);
+    
+    clock_t t;
+    t = clock();
 
     endDate.d = startDate.d;
     endDate.m = startDate.m;
@@ -95,16 +65,13 @@ int main()
     int maxDays = daysInMonth(endDate);
     endDate.leapYear = leap(endDate.y);
 
-    while (days)
-    {
+    while (days){
         endDate.d++;
         days--;
-        if (endDate.d > maxDays)
-        {
+        if (endDate.d > maxDays){
             endDate.m++;
             endDate.d = 1;
-            if(endDate.m > 12)
-            {
+            if(endDate.m > 12){
                 endDate.y++;
                 endDate.m = 1;
                 endDate.leapYear = leap(endDate.y);
@@ -118,7 +85,6 @@ int main()
 
     printf("Before:\t%d/%d/%d\n", startDate.d, startDate.m, startDate.y);
     printf("After:\t%d/%d/%d\n", endDate.d, endDate.m, endDate.y);
-
     printf("\nCompleted in %f seconds\n", time_taken);
 
     return 0;

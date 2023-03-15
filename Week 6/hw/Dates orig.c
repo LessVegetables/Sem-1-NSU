@@ -6,25 +6,25 @@
 // годы). Обязательно использовать
 // структуры(struct) и кейсы (switch)
 
+// this version does not utilize struct
+
 #include <stdio.h>
 #include <time.h>
 
-typedef struct Date
-{
-    int d, m, y, leapYear;
-}date;
 
-// returns the number of days in passed month
-int daysInMonth(date day)
-{
-    int February = (day.leapYear) ? 29 : 28;
+int leapYear = 0;
 
-    switch (day.m)
+int daysInMonth(month)
+{
+    int output;
+    output = (leapYear) ? 29 : 28;
+
+    switch (month)
     {
     case 1:
         return 31;
     case 2:
-        return February;
+        return output;
     case 3:
         return 31;
     case 4:
@@ -52,9 +52,26 @@ int daysInMonth(date day)
     return 0;
 }
 
-// returns 1 if leap year, 0 — otherwise
 int leap(int year)
 {
+    // if (year % 4 == 0){
+    //     if (year % 100 == 0){
+    //         if (year % 400 == 0){
+    //             return 1;
+    //         }
+    //         else{
+    //             return 0;
+    //         }
+    //     }
+    //     else{
+    //         return 1;
+    //     }
+    // }
+    // else{
+    //     return 0;
+    // }
+    // return 0;
+
     if (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)){
         //printf("%d\tLEAP\n", year);
         return 1;
@@ -70,54 +87,48 @@ int main()
     clock_t t;
     t = clock();
 
-    int days;    
-    date startDate, endDate;
+    int d, m, y, days;
 
     // INPUT: D M Y
-    scanf("%d%d%d%d", &startDate.d, &startDate.m, &startDate.y, &days);
+    scanf("%d%d%d%d", &d, &m, &y, &days);
 
-    // INPUT: DD/MM/YYYY
-    // char dateInput[10];
+    // INPUT: DD.MM.YYYY
+    // char date[10];
     // for(int i = 0; i < 10; i++)
     // {
-    //     scanf("%c", &dateInput[i]);
+    //     scanf("%c", &date[i]);
     // }
-    // startDate.d = ((int)dateInput[0] - 48) * 10 + dateInput[1] - 48;
-    // startDate.m = ((int)dateInput[3] - 48) * 10 + dateInput[4] - 48;
-    // startDate.y = ((int)dateInput[6] - 48) * 1000 + ((int)dateInput[7] - 48) * 100 + ((int)dateInput[8] - 48) * 10 + (int)dateInput[9] - 48;
-    //
-    // scnaf("%d", &days);
+    // d = ((int)date[0] - 48) * 10 + date[1] - 48;
+    // m = ((int)date[3] - 48) * 10 + date[4] - 48;
+    // y = ((int)date[6] - 48) * 1000 + ((int)date[7] - 48) * 100 + ((int)date[8] - 48) * 10 + (int)date[9] - 48;
 
-    endDate.d = startDate.d;
-    endDate.m = startDate.m;
-    endDate.y = startDate.y;
+    printf("Before:\t%d/%d/%d\n", d, m, y);
     
-    int maxDays = daysInMonth(endDate);
-    endDate.leapYear = leap(endDate.y);
+    int maxDays = daysInMonth(m);
+    leapYear = leap(y);
 
     while (days)
     {
-        endDate.d++;
+        d++;
         days--;
-        if (endDate.d > maxDays)
+        if (d > maxDays)
         {
-            endDate.m++;
-            endDate.d = 1;
-            if(endDate.m > 12)
+            m++;
+            d = 1;
+            if(m > 12)
             {
-                endDate.y++;
-                endDate.m = 1;
-                endDate.leapYear = leap(endDate.y);
+                y++;
+                m = 1;
+                leapYear = leap(y);
             }
-            maxDays = daysInMonth(endDate);
+            maxDays = daysInMonth(m);
         }
     }
 
     t = clock() - t;
     double time_taken = ((double)t)/CLOCKS_PER_SEC; // in seconds
 
-    printf("Before:\t%d/%d/%d\n", startDate.d, startDate.m, startDate.y);
-    printf("After:\t%d/%d/%d\n", endDate.d, endDate.m, endDate.y);
+    printf("After:\t%d/%d/%d\n", d, m, y);
 
     printf("\nCompleted in %f seconds\n", time_taken);
 
