@@ -1,0 +1,4 @@
+this is a test \* this is a comment *\
+this is a star: *
+\* this should still print
+this is a back slash: \
