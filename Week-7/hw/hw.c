@@ -9,20 +9,24 @@
 
 int main()
 {
-    FILE *input, *output;
+   FILE *input, *output;
 
-    if ((input = fopen("input.txt","r")) == NULL){
-       printf("Error opening file\n");
-       exit(1);
-       // Program exits if the file pointer returns NULL.
-    }
-    if ((output = fopen("output.txt","w")) == NULL){
-       printf("Error creating file\n");
-       exit(1);
-       // Program exits if the file pointer returns NULL.
-    }
+   if ((input = fopen("input.txt","r")) == NULL)
+   {
+      printf("Error opening file\n");
+      exit(1);
+      // Program exits if the file pointer returns NULL.
+   }
+   if ((output = fopen("output.txt","w")) == NULL)
+   {
+      printf("Error creating file\n");
+      exit(1);
+      // Program exits if the file pointer returns NULL.
+   }
 
-    
+   
+
+   
 
 
 

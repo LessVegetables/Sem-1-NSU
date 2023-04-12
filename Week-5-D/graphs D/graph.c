@@ -5,7 +5,6 @@
 
 int main()
 {
-    // signed int iMax = (unsigned int)~0 >> 1; // если хочется выпенриться своими умениями копировать загуглинный код
 
     int n, s, e, w, max = INT_MAX;
 

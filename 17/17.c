@@ -198,14 +198,14 @@ int logic(char* start, char* end, int j)
 {
     int bracketCount = 0;
 
+    char* newStart;
+
     //printf("start: %p\t end: %p\n", start, end);
 
-    // for (char* i = start; i != end + 1; i++)
-    // {
-
-    //     printf("%c", *i);
-    // }
-    // printf("\n");
+    for (char* i = start; i != end + 1; i++)
+    {
+        if (*i == '(') bracketCount++;
+    }
 
     return 2;
 }
