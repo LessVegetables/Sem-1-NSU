@@ -11,7 +11,6 @@ int main()
       return(-1);
    }
 
-
     char word[100], ansWord[100], c;
 
     int len = 0, maxLen = 0;
