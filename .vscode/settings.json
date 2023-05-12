@@ -4,6 +4,25 @@
         "string.h": "c",
         "stdio.h": "c",
         "__tuple": "c",
-        "array": "c"
+        "array": "c",
+        "__hash_table": "c",
+        "complex": "c",
+        "functional": "c",
+        "memory_resource": "c",
+        "istream": "c",
+        "locale": "c",
+        "memory": "c",
+        "mutex": "c",
+        "ostream": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "unordered_map": "c",
+        "utility": "c",
+        "variant": "c",
+        "vector": "c",
+        "stack.h": "c",
+        "tree.h": "c",
+        "__config": "c",
+        "typeinfo": "c"
     }
 }
